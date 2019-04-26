@@ -50,14 +50,14 @@ These costs can be the number of messages or the data volume exchanged, for inst
 The communication graph must be connected (all rows must have at least one non-zero value).
 Negative communication costs are not accepted.
 
-> C: communication cost matrix of dimensions n\*n. Indexes go from 0 to n-1.
-> C(x): row x of C (of size n)
-> C(x,y): element of row x and column y of C
-> Σi C(x,i): sum of all elements of row x (C(x,0)+C(x,1)+...+C(x,n-1))
-> Σi\[1..3\] C(x,i): C(x,1)+C(x,2)+C(x,3)
-> sum(C): sum of all elements of C
-> sum(C(x)): sum of all elements of row x of C
-> max, min, var: maximum, minimum, variance
+> C: communication cost matrix of dimensions n\*n. Indexes go from 0 to n-1.  
+> C(x): row x of C (of size n)  
+> C(x,y): element of row x and column y of C  
+> Σi C(x,i): sum of all elements of row x (C(x,0)+C(x,1)+...+C(x,n-1))  
+> Σi\[1..3\] C(x,i): C(x,1)+C(x,2)+C(x,3)  
+> sum(C): sum of all elements of C  
+> sum(C(x)): sum of all elements of row x of C  
+> max, min, var: maximum, minimum, variance  
 > ^2: squared
 
 ### CA: Communication Amount \[1\]
@@ -78,7 +78,7 @@ mycomm.communicationAmount()
 
 Computes the communication balance of the matrix. Higher values mean that the communication is more imbalanced.
 
-> Given T(i) = sum(C(i)),
+> Given T(i) = sum(C(i)),  
 > CB = 100 \* (max(T)/(Σi T(i)/n) - 1)
 
 ```python
@@ -92,7 +92,7 @@ mycomm.communicationBalance()
 
 Computes the communication balance of the matrix. Higher values mean that the communication is more imbalanced.
 
-> Given T(i) = sum(C(i)),
+> Given T(i) = sum(C(i)),  
 > CBv2 = 1 - (Σi T(i)/n) / max(T)
 
 ```python
@@ -106,11 +106,11 @@ mycomm.communicationBalance_v2()
 
 Computes how communication is dispersed from the diagonal. Higher values mean that more communication is off the diagonal.
 
-> Consider, for simplicity, that any values outside a row are equal to 0, i.e.,
-> C(i,j) = 0 if j < 0 or j >= n.
+> Consider, for simplicity, that any values outside a row are equal to 0, i.e.,  
+> C(i,j) = 0 if j < 0 or j >= n.  
 > Given a radius > 0 around i such at least half of the communication costs of row i lie 
-thin it, i.e.,
-> r(i) = argmin r ( Σj\[i-r..i+r\] C(i,j) >= sum(C(i))/2 ),
+thin it, i.e.,  
+> r(i) = argmin r ( Σj\[i-r..i+r\] C(i,j) >= sum(C(i))/2 ),  
 > CC = Σi ( min(i+r(i),n-1) - max(i-r(i),0) ) / n^2
 
 ```python
@@ -124,8 +124,8 @@ mycomm.communicationCentrality()
 
 Computes the communication heterogeneity of the matrix. Higher values mean higher heterogeneity.
 
-> Given the normalized matrix M = 100 \* C/max(C),
-> CH = ΣiΣj ( (Σk M(i,k))/n - M(i,j) )^2 / n^2, or
+> Given the normalized matrix M = 100 \* C/max(C),  
+> CH = ΣiΣj ( (Σk M(i,k))/n - M(i,j) )^2 / n^2, or  
 > CH = Σi var(M(i)) / n
 
 ```python
@@ -139,8 +139,8 @@ mycomm.communicationHeterogeneity()
 
 Computes the communication heterogeneity of the matrix. Higher values mean higher heterogeneity.
 
-> Given the normalized matrix M = C/max(C),
-> CHv2 = ΣiΣj ( (Σk M(i,k))/n - M(i,j) )^2 / n^2, or
+> Given the normalized matrix M = C/max(C),  
+> CHv2 = ΣiΣj ( (Σk M(i,k))/n - M(i,j) )^2 / n^2, or  
 > CHv2 = Σi var(M(i)) / n
 
 ```python
@@ -155,8 +155,8 @@ mycomm.communicationHeterogeneity_v2()
 Computes the fraction of communication that is done between ranking neighbors.
 Higher values mean that more communication is done with others besides neighbors.
 
-> Consider, for simplicity, that any values outside a row are equal to 0, i.e.,
-> C(i,j) = 0 if j < 0 or j >= n.
+> Consider, for simplicity, that any values outside a row are equal to 0, i.e.,  
+> C(i,j) = 0 if j < 0 or j >= n.  
 > NBC = 1 - Σi ( C(i,i-1) + C(i,i+1) ) / sum(C)
 
 ```python
