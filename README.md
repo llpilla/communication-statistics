@@ -81,6 +81,7 @@ Computes the communication balance of the matrix. Higher values mean that the co
 > Given T(i) = sum(C(i)),  
 > CB = 100 \* (max(T)/(Σi T(i)/n) - 1)
 
+Use:
 ```python
 import CommunicationStatistics as cs
 mycomm = cs.CommunicationStatistics('tests/all_1s.csv')
@@ -95,6 +96,7 @@ Computes the communication balance of the matrix. Higher values mean that the co
 > Given T(i) = sum(C(i)),  
 > CBv2 = 1 - (Σi T(i)/n) / max(T)
 
+Use:
 ```python
 import CommunicationStatistics as cs
 mycomm = cs.CommunicationStatistics('tests/all_1s.csv')
@@ -113,6 +115,7 @@ thin it, i.e.,
 > r(i) = argmin r ( Σj\[i-r..i+r\] C(i,j) >= sum(C(i))/2 ),  
 > CC = Σi ( min(i+r(i),n-1) - max(i-r(i),0) ) / n^2
 
+Use:
 ```python
 import CommunicationStatistics as cs
 mycomm = cs.CommunicationStatistics('tests/all_1s.csv')
@@ -128,6 +131,7 @@ Computes the communication heterogeneity of the matrix. Higher values mean highe
 > CH = ΣiΣj ( (Σk M(i,k))/n - M(i,j) )^2 / n^2, or  
 > CH = Σi var(M(i)) / n
 
+Use:
 ```python
 import CommunicationStatistics as cs
 mycomm = cs.CommunicationStatistics('tests/all_1s.csv')
@@ -143,6 +147,7 @@ Computes the communication heterogeneity of the matrix. Higher values mean highe
 > CHv2 = ΣiΣj ( (Σk M(i,k))/n - M(i,j) )^2 / n^2, or  
 > CHv2 = Σi var(M(i)) / n
 
+Use:
 ```python
 import CommunicationStatistics as cs
 mycomm = cs.CommunicationStatistics('tests/all_1s.csv')
@@ -159,6 +164,7 @@ Higher values mean that more communication is done with others besides neighbors
 > C(i,j) = 0 if j < 0 or j >= n.  
 > NBC = 1 - Σi ( C(i,i-1) + C(i,i+1) ) / sum(C)
 
+Use:
 ```python
 import CommunicationStatistics as cs
 mycomm = cs.CommunicationStatistics('tests/all_1s.csv')
@@ -173,6 +179,7 @@ Higher values mean that more communication happens outside these blocks.
 
 > SP(k) = 1 - Σs\[0..n/k-1\] Σl\[0..k] Σm\[0..k\] C(s\*k+l,s\*k+m) / sum(C)
 
+Use:
 ```python
 import CommunicationStatistics as cs
 mycomm = cs.CommunicationStatistics('tests/all_1s.csv')
