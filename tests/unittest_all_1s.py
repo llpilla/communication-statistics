@@ -6,11 +6,11 @@ Communication Statistics test with a 8x8 matrix with all 1s
 import unittest
 import sys
 sys.path.insert(0,'..')
-import CommunicationStatistics as cS
+from CommunicationStatistics import CommunicationStatistics
 
 class allOnesTest(unittest.TestCase):
     def setUp(self):
-        self.stats = cS.CommunicationStatistics('all_1s.csv')
+        self.stats = CommunicationStatistics('all_1s.csv')
 
     def test_CH(self):
         self.assertEqual(self.stats.CH(),0.0)

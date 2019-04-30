@@ -9,12 +9,12 @@ Usage:
 - for computing statistics for all files in a directory: find DIR_NAME/* -exec ./runStats.py {} +
 """
 
-import CommunicationStatistics as cS
+from CommunicationStatistics import CommunicationStatistics
 import sys
 
 for arg in sys.argv[1:]:
     print('*** Communication statistics for ' + arg + ' ***')
-    stats = cS.CommunicationStatistics(arg)
+    stats = CommunicationStatistics(arg)
     print('Communication heterogeneity (CH):\t', stats.CH())
     print('Communication heterogeneity v2 (CH):\t', stats.CHv2())
     print('Communication amount (CA):\t', stats.CA())
