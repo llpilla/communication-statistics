@@ -4,11 +4,15 @@ These Python 3 scripts can be used to compute communication statistics over comm
 
 This software is made available using the CeCILL-C license. Check the [LICENSE](LICENSE) file for more information.
 
+## Dependencies
+
+We use modules numpy, unittest, and sys in our code. If anything is missing, please use `pip3 install` to install it. 
+
 ## How to use
 
 ### As a script
 
-Run runStats.py with the communication matrix CSV files as arguments
+Run `runStats.py` with the communication matrix CSV files as arguments
 
 Example:
 
@@ -22,19 +26,23 @@ $ python3 runStats.py tests/all_1s.csv
 
 ### As a Python module/class
 
-Use `import CommunicationStatistics` inside Python 3.
+Use `import commstats` or `from commstats import CommunicationStatistics` inside Python 3.
 
 Example:
 
 ```python
-import CommunicationStatistics as cs
-mycomm = cs.CommunicationStatistics('tests/all_1s.csv')
-print('CA = ', mycomm.CA())
+from commstats import CommunicationStatistics
+mycomm = CommunicationStatistics('tests/all_1s.csv')
+print('CA = ', mycomm.ca())
 ```
 
 ## How to test
 
-If you want to check if everything is working as expected, the directory [tests](tests/) contains two unitary tests that can be used to check if there is anything wrong happening.
+Run `unittest.sh` to run unit tests.
+
+```console
+$ ./unittest.sh
+```
 
 The directory [bad\_matrices](bad\_matrices/) contains some CSV files that should raise exceptions in the code.
 
@@ -68,10 +76,10 @@ Computes the average communication cost of the matrix.
 
 Use:
 ```python
-import CommunicationStatistics as cs
-mycomm = cs.CommunicationStatistics('tests/all_1s.csv')
-mycomm.CA()
-mycomm.communicationAmount()
+from commstats import CommunicationStatistics
+mycomm = CommunicationStatistics('tests/all_1s.csv')
+mycomm.ca()
+mycomm.communication_amount()
 ```
 
 ### CB: Communication Balance \[2\]
@@ -83,10 +91,10 @@ Computes the communication balance of the matrix. Higher values mean that the co
 
 Use:
 ```python
-import CommunicationStatistics as cs
-mycomm = cs.CommunicationStatistics('tests/all_1s.csv')
-mycomm.CB()
-mycomm.communicationBalance()
+from commstats import CommunicationStatistics
+mycomm = CommunicationStatistics('tests/all_1s.csv')
+mycomm.cb()
+mycomm.communication_balance()
 ```
 
 ### CBv2: Communication Balance as in \[3\]
@@ -98,10 +106,10 @@ Computes the communication balance of the matrix. Higher values mean that the co
 
 Use:
 ```python
-import CommunicationStatistics as cs
-mycomm = cs.CommunicationStatistics('tests/all_1s.csv')
-mycomm.CBv2()
-mycomm.communicationBalance_v2()
+from commstats import CommunicationStatistics
+mycomm = CommunicationStatistics('tests/all_1s.csv')
+mycomm.cb_v2()
+mycomm.communication_balance_v2()
 ```
 
 ### CC: Communication Centrality \[3\]
@@ -117,10 +125,10 @@ thin it, i.e.,
 
 Use:
 ```python
-import CommunicationStatistics as cs
-mycomm = cs.CommunicationStatistics('tests/all_1s.csv')
-mycomm.CC()
-mycomm.communicationCentrality()
+from commstats import CommunicationStatistics
+mycomm = CommunicationStatistics('tests/all_1s.csv')
+mycomm.cc()
+mycomm.communication_centrality()
 ```
 
 ### CH: Communication Heterogeneity \[1\]
@@ -133,10 +141,10 @@ Computes the communication heterogeneity of the matrix. Higher values mean highe
 
 Use:
 ```python
-import CommunicationStatistics as cs
-mycomm = cs.CommunicationStatistics('tests/all_1s.csv')
-mycomm.CH()
-mycomm.communicationHeterogeneity()
+from commstats import CommunicationStatistics
+mycomm = CommunicationStatistics('tests/all_1s.csv')
+mycomm.ch()
+mycomm.communication_heterogeneity()
 ```
 
 ### CHv2: Communication Heterogeneity as in \[3\]
@@ -149,10 +157,10 @@ Computes the communication heterogeneity of the matrix. Higher values mean highe
 
 Use:
 ```python
-import CommunicationStatistics as cs
-mycomm = cs.CommunicationStatistics('tests/all_1s.csv')
-mycomm.CHv2()
-mycomm.communicationHeterogeneity_v2()
+from commstats import CommunicationStatistics
+mycomm = CommunicationStatistics('tests/all_1s.csv')
+mycomm.ch_v2()
+mycomm.communication_heterogeneity_v2()
 ```
 
 ### NBC: Neighbor Communication Fraction \[3\]
@@ -166,10 +174,10 @@ Higher values mean that more communication is done with others besides neighbors
 
 Use:
 ```python
-import CommunicationStatistics as cs
-mycomm = cs.CommunicationStatistics('tests/all_1s.csv')
-mycomm.NBC()
-mycomm.neighborCommunicationFraction()
+from commstats import CommunicationStatistics
+mycomm = CommunicationStatistics('tests/all_1s.csv')
+mycomm.nbc()
+mycomm.neighbor_communication_fraction()
 ```
 
 ### SP(k): Split Fraction \[3\]
@@ -181,10 +189,10 @@ Higher values mean that more communication happens outside these blocks.
 
 Use:
 ```python
-import CommunicationStatistics as cs
-mycomm = cs.CommunicationStatistics('tests/all_1s.csv')
-mycomm.SP(4)
-mycomm.splitFraction(4)
+from commstats import CommunicationStatistics
+mycomm = CommunicationStatistics('tests/all_1s.csv')
+mycomm.sp(4)
+mycomm.split_fraction(4)
 ```
 
 ---
