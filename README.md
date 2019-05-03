@@ -12,16 +12,16 @@ We use modules numpy, unittest, and sys in our code. If anything is missing, ple
 
 ### As a script
 
-Run `runStats.py` with the communication matrix CSV files as arguments
+Run `run_stats.py` with the communication matrix CSV files as arguments
 
 Example:
 
 ```console
-$ ./runStats.py tests/all_1s.csv
+$ ./run_stats.py tests/all_1s.csv
 ```
 or
 ```console
-$ python3 runStats.py tests/all_1s.csv
+$ python3 run_stats.py tests/all_1s.csv
 ```
 
 ### As a Python module/class
