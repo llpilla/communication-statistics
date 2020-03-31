@@ -12,16 +12,16 @@ We use modules numpy, unittest, and sys in our code. If anything is missing, ple
 
 ### As a script
 
-Run `runStats.py` with the communication matrix CSV files as arguments
+Run `run_stats.py` with the communication matrix CSV files as arguments
 
 Example:
 
 ```console
-$ ./runStats.py tests/all_1s.csv
+$ ./run_stats.py tests/all_1s.csv
 ```
 or
 ```console
-$ python3 runStats.py tests/all_1s.csv
+$ python3 run_stats.py tests/all_1s.csv
 ```
 
 ### As a Python module/class
@@ -70,7 +70,7 @@ Negative communication costs are not accepted.
 
 ### CA: Communication Amount \[1\]
 
-Computes the average communication cost of the matrix.
+Computes the average communication cost of the matrix. Higher values mean that there is more communication happening in the application (the application should benefit more from a careful mapping).
 
 > CA = sum(C) / n^2
 
@@ -84,7 +84,7 @@ mycomm.communication_amount()
 
 ### CB: Communication Balance \[2\]
 
-Computes the communication balance of the matrix. Higher values mean that the communication is more imbalanced.
+Computes the communication balance of the matrix. Higher values mean that the communication is more imbalanced (the application should benefit more from a careful mapping).
 
 > Given T(i) = sum(C(i)),  
 > CB = 100 \* (max(T)/(Σi T(i)/n) - 1)
@@ -99,7 +99,7 @@ mycomm.communication_balance()
 
 ### CBv2: Communication Balance as in \[3\]
 
-Computes the communication balance of the matrix. Higher values mean that the communication is more imbalanced.
+Computes the communication balance of the matrix. Higher values mean that the communication is more imbalanced (the application should benefit more from a careful mapping).
 
 > Given T(i) = sum(C(i)),  
 > CBv2 = 1 - (Σi T(i)/n) / max(T)
@@ -114,7 +114,7 @@ mycomm.communication_balance_v2()
 
 ### CC: Communication Centrality \[3\]
 
-Computes how communication is dispersed from the diagonal. Higher values mean that more communication is off the diagonal.
+Computes how communication is dispersed from the diagonal. Higher values mean that more communication is off the diagonal (the application should benefit more from a careful mapping).
 
 > Consider, for simplicity, that any values outside a row are equal to 0, i.e.,  
 > C(i,j) = 0 if j < 0 or j >= n.  
@@ -133,7 +133,7 @@ mycomm.communication_centrality()
 
 ### CH: Communication Heterogeneity \[1\]
 
-Computes the communication heterogeneity of the matrix. Higher values mean higher heterogeneity.
+Computes the communication heterogeneity of the matrix. Higher values mean higher heterogeneity (the application should benefit more from a careful mapping).
 
 > Given the normalized matrix M = 100 \* C/max(C),  
 > CH = ΣiΣj ( (Σk M(i,k))/n - M(i,j) )^2 / n^2, or  
@@ -149,7 +149,7 @@ mycomm.communication_heterogeneity()
 
 ### CHv2: Communication Heterogeneity as in \[3\]
 
-Computes the communication heterogeneity of the matrix. Higher values mean higher heterogeneity.
+Computes the communication heterogeneity of the matrix. Higher values mean higher heterogeneity (the application should benefit more from a careful mapping).
 
 > Given the normalized matrix M = C/max(C),  
 > CHv2 = ΣiΣj ( (Σk M(i,k))/n - M(i,j) )^2 / n^2, or  
@@ -166,7 +166,7 @@ mycomm.communication_heterogeneity_v2()
 ### NBC: Neighbor Communication Fraction \[3\]
 
 Computes the fraction of communication that is done between ranking neighbors.
-Higher values mean that more communication is done with others besides neighbors.
+Higher values mean that more communication is done with others besides neighbors (the application should benefit more from a careful mapping).
 
 > Consider, for simplicity, that any values outside a row are equal to 0, i.e.,  
 > C(i,j) = 0 if j < 0 or j >= n.  
@@ -183,7 +183,7 @@ mycomm.neighbor_communication_fraction()
 ### SP(k): Split Fraction \[3\]
 
 Computes the fraction of communication that happens among elements in k\*k blocks.
-Higher values mean that more communication happens outside these blocks.
+Higher values mean that more communication happens outside these blocks (the application should benefit more from a careful mapping).
 
 > SP(k) = 1 - Σs\[0..n/k-1\] Σl\[0..k] Σm\[0..k\] C(s\*k+l,s\*k+m) / sum(C)
 

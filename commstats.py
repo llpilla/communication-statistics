@@ -7,7 +7,7 @@ Please check the information on the CommunicationStatistics class for more detai
 
 import numpy as np
 
-class CommunicationStatistics(object):
+class CommunicationStatistics():
     """
     Computes multiple communication metrics/statistics over a given communication matrix.
 
@@ -250,7 +250,7 @@ class CommunicationStatistics(object):
         """
         return self.neighbor_communication_fraction()
 
-    def split_fraction(self, k=2):
+    def split_fraction(self, k: int = 2):
         """
         Computes the split fraction for k (SP(k)) of a matrix.
 
@@ -287,7 +287,7 @@ class CommunicationStatistics(object):
         stats = 1 - accum/np.sum(self.costs)
         return stats
 
-    def sp(self, k=2):   # pylint: disable=invalid-name
+    def sp(self, k: int = 2):   # pylint: disable=invalid-name
         """
         Short-hand for split_fraction.
 
