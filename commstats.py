@@ -72,11 +72,6 @@ class CommunicationStatistics():
             print("* The communication matrix contains negative values.")
             raise ValueError
         #
-        # Checking if any rows have only zeroes
-        if (np.sum(self.costs, axis=1) == 0.).any():
-            print("* The communication matrix has at least one row with zeroes only.")
-            raise ZeroDivisionError
-        #
         # Checking if the communication matrix is square
         if self.costs.shape[0] != self.costs.shape[1]:
             print("* The communication matrix has to be a square.")
